@@ -40,6 +40,16 @@
   [& args]
   (map :name (apply glitter-filter args)))
 
+(defn convert-to-string
+  [suspect]
+  (clojure.string/join "," (vals suspect)))
+
+(defn append
+  "Appends a new suspect to db of suspects"
+  [suspect]
+  (spit filename
+        (str (slurp filename) "\r\n" (str (convert-to-string suspect)))))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
