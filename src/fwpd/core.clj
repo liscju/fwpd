@@ -50,6 +50,13 @@
   (spit filename
         (str (slurp filename) "\r\n" (str (convert-to-string suspect)))))
 
+(def suspect-keys [:name :glitter-index])
+
+(defn validate
+  "Validates that suspect has valid structure"
+  [suspect]
+  (every? #(% suspect) suspect-keys))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
