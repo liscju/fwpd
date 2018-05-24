@@ -36,6 +36,10 @@
   [minimum-glitter records]
   (filter #(>= (:glitter-index %) minimum-glitter) records))
 
+(defn glitter-filter-names
+  [& args]
+  (map :name (apply glitter-filter args)))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
